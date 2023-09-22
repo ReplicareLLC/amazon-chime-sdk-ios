@@ -46,7 +46,9 @@ public class BackgroundFilterProcessor {
     ///
     /// - Returns: true if the class can be used, otherwise false.
     public static func isAvailable() -> Bool {
-        return TensorFlowSegmentationProcessor.isAvailable()
+        // REPLICARE - REMOVED TO GET SPM WORKING
+//        return TensorFlowSegmentationProcessor.isAvailable()
+        return false
     }
 
     /// Public constructor to initialize the processor.
@@ -63,7 +65,9 @@ public class BackgroundFilterProcessor {
                               "to your project.")
             segmentationProcessor = NoopSegmentationProcessor()
         } else {
-            segmentationProcessor = TensorFlowSegmentationProcessor()
+            // REPLICARE - REMOVED TO GET SPM WORKING
+//            segmentationProcessor = TensorFlowSegmentationProcessor()
+            segmentationProcessor = NoopSegmentationProcessor()
         }
     }
 
