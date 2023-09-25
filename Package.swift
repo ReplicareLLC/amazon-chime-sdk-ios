@@ -20,32 +20,25 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "AmazonChimeSDK",
-            targets: ["amazon-chime-sdk-ios-swift", "AmazonChimeSDKMedia"]),
+            targets: ["AmazonChimeSDK", "AmazonChimeSDKMedia"]),
+    ],
+    dependencies: [
+        .package(url: "https://github.com/birdrides/mockingbird.git", "0.15.0"..<"0.16.0")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "amazon-chime-sdk-ios-swift",
+            name: "AmazonChimeSDK",
             path: "AmazonChimeSDK/AmazonChimeSDK",
             exclude: ["audiovideo/video/backgroundfilter/TensorFlowSegmentationProcessor.m"],
             publicHeadersPath: "AmazonChimeSDK.h"
         ),
-//        .target(
-//            name: "amazon-chime-sdk-ios-objc",
-//            path: "AmazonChimeSDK/AmazonChimeSDK",
-//            sources: [
-////                "AmazonChimeSDK.h",
-//                "audiovideo/video/backgroundfilter/CwtEnum.h",
-////                "video/backgroundfilter/TwtTfLiteModel.h",
-//                "audiovideo/video/backgroundfilter/SegmentationProcessor.h",
-//                "audiovideo/video/backgroundfilter/TensorFlowSegmentationProcessor.m",
-//            ],
-//            publicHeadersPath: ""
-//        ),
         .testTarget(
-            name: "amazon-chime-sdk-iosTests",
-            dependencies: ["amazon-chime-sdk-ios-swift"]),
+            name: "AmazonChimeSDKTests",
+            dependencies: ["AmazonChimeSDK", .product(name: "Mockingbird", package: "mockingbird")],
+            path: "AmazonChimeSDK/AmazonChimeSDKTests"
+        ),
         .binaryTarget(
             name: "AmazonChimeSDKMedia",
             url: "\(hostingUrl)/media-without-bitcode/\(SDKMediaVersion)/spm/AmazonChimeSDKMedia-\(SDKMediaVersion).zip",
