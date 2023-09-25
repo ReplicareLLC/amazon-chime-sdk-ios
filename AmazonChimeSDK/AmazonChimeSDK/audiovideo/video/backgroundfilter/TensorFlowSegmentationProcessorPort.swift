@@ -15,5 +15,7 @@ import Foundation
 
 
 
-@available(*, deprecated, message: "This was not properly ported. Do not use until it has been correctly ported.")
-public class TensorFlowSegmentationProcessor : NoopSegmentationProcessor {}
+public class TensorFlowSegmentationProcessor : NoopSegmentationProcessor {
+    /// This was not properly ported. Do not use until it has been correctly ported.
+    open class func isAvailable() -> Bool { false }
+}
