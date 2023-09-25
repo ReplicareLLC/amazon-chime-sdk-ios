@@ -3,6 +3,8 @@
 
 import PackageDescription
 
+// Based on https://github.com/aws/amazon-chime-sdk-ios-spm/blob/main/Package.swift
+
 // Current stable version of the Amazon Chime SDK for iOS
 let SDKMediaVersion = "0.18.1"
 let SDKMachineLearningVersion = "0.2.0"
