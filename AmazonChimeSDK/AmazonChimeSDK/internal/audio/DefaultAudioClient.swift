@@ -9,11 +9,11 @@
 import AmazonChimeSDKMedia
 import Foundation
 
-class DefaultAudioClient: AudioClient {
+public class DefaultAudioClient: AudioClient {
     private static var logger: Logger?
     private static var sharedInstance: DefaultAudioClient?
 
-    static func shared(logger: Logger) -> DefaultAudioClient {
+    public static func shared(logger: Logger) -> DefaultAudioClient {
         DefaultAudioClient.logger = logger
         if sharedInstance == nil {
             sharedInstance = DefaultAudioClient()
@@ -21,7 +21,7 @@ class DefaultAudioClient: AudioClient {
         return sharedInstance!
     }
 
-    override func audioLogCallBack(_ logLevel: loglevel_t, msg: String?) {
+    public override func audioLogCallBack(_ logLevel: loglevel_t, msg: String?) {
         guard let msg = msg else { return }
         switch logLevel.rawValue {
         case Constants.errorLevel, Constants.fatalLevel:
