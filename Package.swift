@@ -6,7 +6,7 @@ import PackageDescription
 // Based on https://github.com/aws/amazon-chime-sdk-ios-spm/blob/main/Package.swift
 
 // Current stable version of the Amazon Chime SDK for iOS
-let SDKMediaVersion = "0.18.1"
+let SDKMediaVersion = "0.18.3"
 let SDKMachineLearningVersion = "0.2.0"
 
 // Hosting url where the release artifacts are hosted.
@@ -20,9 +20,9 @@ let package = Package(
     name: "AmazonChimeSDK",
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
-        .library(
-            name: "AmazonChimeSDK",
-            targets: ["AmazonChimeSDK", "AmazonChimeSDKMedia"]),
+        .library(name: "AmazonChimeSDK", targets: ["AmazonChimeSDK", "AmazonChimeSDKMedia"]),
+        .library(name: "AmazonChimeSDKMedia", targets: ["AmazonChimeSDKMedia"]),
+        .library(name: "AmazonChimeSDKMachineLearning", targets: ["AmazonChimeSDKMachineLearning"]),
     ],
     dependencies: [
         .package(url: "https://github.com/birdrides/mockingbird.git", "0.15.0"..<"0.16.0")
