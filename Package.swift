@@ -13,7 +13,7 @@ let SDKMachineLearningVersion = "0.2.0"
 let hostingUrl = "https://amazon-chime-sdk-ios.s3.amazonaws.com"
 
 // Checksums for SDKs to verify that the hosted archive file matches the archive declared in the manifest file.
-let SDKMediaChecksum = "b2a96a5e52bba1d581a8ae3f8593ee183c2c866d0083fb16d4be72dc56927278"
+let SDKMediaChecksum = "03751799d43c5325524f9056057530f25da4ccdc6d712acb24f556471f0e939a"
 let SDKMachineLearningChecksum = "d79e15d11b24ee53219a0c02963e60c4b56cd2f4d121bf8d40c3fe3068a14a9d"
 
 let package = Package(
