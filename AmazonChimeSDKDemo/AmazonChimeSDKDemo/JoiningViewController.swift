@@ -18,6 +18,7 @@ class JoiningViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var audioModeOptionsPicker: UIPickerView!
     @IBOutlet var joinButton: UIButton!
     @IBOutlet var debugSettingsButton: UIButton!
+    @IBOutlet var audioRedundancySwitch: UISwitch!
 
     var callKitOptions = ["Don't use CallKit", "CallKit as Incoming in 10s", "CallKit as Outgoing"]
     var audioModeOptions = ["Stereo/48KHz Audio", "Mono/48KHz Audio", "Mono/16KHz Audio"]
@@ -36,6 +37,8 @@ class JoiningViewController: UIViewController, UITextFieldDelegate {
 
         audioModeOptionsPicker.delegate = self
         audioModeOptionsPicker.dataSource = self
+
+        audioRedundancySwitch.isOn = true
 
         setupHideKeyboardOnTap()
         versionLabel.text = "amazon-chime-sdk-ios@\(Versioning.sdkVersion())"
@@ -57,7 +60,9 @@ class JoiningViewController: UIViewController, UITextFieldDelegate {
         // Audio Mode
         let audioMode = getSelectedAudioMode()
 
-        joinMeeting(audioVideoConfig: AudioVideoConfiguration(audioMode: audioMode, callKitEnabled: callKitOption != .disabled),
+        let enableAudioRedundancy = audioRedundancySwitch.isOn
+
+        joinMeeting(audioVideoConfig: AudioVideoConfiguration(audioMode: audioMode, callKitEnabled: callKitOption != .disabled, enableAudioRedundancy: enableAudioRedundancy),
                     callKitOption: callKitOption
         )
     }
