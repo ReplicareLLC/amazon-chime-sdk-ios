@@ -9,27 +9,27 @@
 import Foundation
 
 @objcMembers class ConcurrentMutableSet {
-    private let lock = NSRecursiveLock()
+//    private let lock = NSRecursiveLock()
     private let set = NSMutableSet()
     var count: Int {
         return set.count
     }
 
     func add(_ object: Any) {
-        lock.lock()
-        defer { lock.unlock() }
+//        lock.lock()
+//        defer { lock.unlock() }
         set.add(object)
     }
 
     func remove(_ object: Any) {
-        lock.lock()
-        defer { lock.unlock() }
+//        lock.lock()
+//        defer { lock.unlock() }
         set.remove(object)
     }
     
     func removeAll() {
-        lock.lock()
-        defer { lock.unlock() }
+//        lock.lock()
+//        defer { lock.unlock() }
         set.removeAllObjects()
     }
 
@@ -38,8 +38,8 @@ import Foundation
     }
 
     func forEach(_ body: (Any) throws -> Void) rethrows {
-        lock.lock()
-        defer { lock.unlock() }
+//        lock.lock()
+//        defer { lock.unlock() }
         try set.forEach(body)
     }
 }
