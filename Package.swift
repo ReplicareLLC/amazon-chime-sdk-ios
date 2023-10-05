@@ -34,7 +34,10 @@ let package = Package(
             name: "AmazonChimeSDK",
             path: "AmazonChimeSDK/AmazonChimeSDK",
             exclude: ["audiovideo/video/backgroundfilter/TensorFlowSegmentationProcessor.m"],
-            publicHeadersPath: "AmazonChimeSDK.h"
+            publicHeadersPath: "AmazonChimeSDK.h",
+            linkerSettings: [
+                .linkedFramework("Foundation"),
+            ]
         ),
         .testTarget(
             name: "AmazonChimeSDKTests",
