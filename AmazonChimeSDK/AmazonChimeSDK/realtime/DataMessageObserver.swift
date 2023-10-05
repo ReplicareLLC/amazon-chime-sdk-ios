@@ -9,7 +9,7 @@
 import Foundation
 
 /// `DataMessasgeObserver` handles data message event,
-@objc public protocol DataMessageObserver {
+@objc public protocol DataMessageObserver: NSObjectProtocol {
     /// Handles data message receive event
     ///
     /// Note: this callback will be called on main thread.

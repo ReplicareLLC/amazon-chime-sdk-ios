@@ -11,7 +11,7 @@ import Foundation
 import VideoToolbox
 
 /// `VideoTileController` handles rendering/creating of new `VideoTile`.
-@objc public protocol VideoTileController: VideoTileControllerFacade {
+@objc public protocol VideoTileController: VideoTileControllerFacade, NSObjectProtocol {
     /// Called whenever there is a new Video frame received for any of the attendee in the meeting
     /// - Parameters:
     ///   - frame: a frame of video

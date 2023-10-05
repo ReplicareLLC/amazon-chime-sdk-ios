@@ -9,7 +9,7 @@
 import Foundation
 
 /// `AudioVideoObserver` handles audio/video session events.
-@objc public protocol AudioVideoObserver {
+@objc public protocol AudioVideoObserver: NSObjectProtocol {
     /// Called when the audio session is connecting or reconnecting.
     ///
     /// Note: this callback will be called on main thread.

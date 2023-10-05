@@ -15,13 +15,13 @@ import Foundation
         return set.count
     }
 
-    func add(_ object: Any) {
+    func add(_ object: NSObjectProtocol) {
 //        lock.lock()
 //        defer { lock.unlock() }
         set.add(object)
     }
 
-    func remove(_ object: Any) {
+    func remove(_ object: NSObjectProtocol) {
 //        lock.lock()
 //        defer { lock.unlock() }
         set.remove(object)
@@ -33,7 +33,7 @@ import Foundation
         set.removeAllObjects()
     }
 
-    func contains(_ object: Any) -> Bool {
+    func contains(_ object: NSObjectProtocol) -> Bool {
         return set.contains(object)
     }
 
