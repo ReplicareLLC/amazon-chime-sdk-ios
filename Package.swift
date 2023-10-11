@@ -32,9 +32,10 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "AmazonChimeSDK",
-            path: "AmazonChimeSDK/AmazonChimeSDK",
-            exclude: ["audiovideo/video/backgroundfilter/TensorFlowSegmentationProcessor.m"],
-            publicHeadersPath: "AmazonChimeSDK.h"
+            dependencies: [.targetItem(name: "AmazonChimeSDKMedia", condition: nil)],
+            path: "AmazonChimeSDK/AmazonChimeSDK"//,
+//            exclude: ["audiovideo/video/backgroundfilter/TensorFlowSegmentationProcessor.m"]//,
+//            publicHeadersPath: "AmazonChimeSDK.h"
         ),
         .testTarget(
             name: "AmazonChimeSDKTests",
