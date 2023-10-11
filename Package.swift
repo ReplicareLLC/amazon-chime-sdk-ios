@@ -33,8 +33,8 @@ let package = Package(
         .target(
             name: "AmazonChimeSDK",
             dependencies: [.targetItem(name: "AmazonChimeSDKMedia", condition: nil)],
-            path: "AmazonChimeSDK/AmazonChimeSDK"//,
-//            exclude: ["audiovideo/video/backgroundfilter/TensorFlowSegmentationProcessor.m"]//,
+            path: "AmazonChimeSDK/AmazonChimeSDK",
+            exclude: ["audiovideo/video/backgroundfilter/TensorFlowSegmentationProcessor.m"]//,
 //            publicHeadersPath: "AmazonChimeSDK.h"
         ),
         .testTarget(
