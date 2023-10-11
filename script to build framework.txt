@@ -1,4 +1,0 @@
-
-xcodebuild archive -project AmazonChimeSDK/AmazonChimeSDK.xcodeproj -configuration Release -scheme AmazonChimeSDK -destination "generic/platform=iOS" -archivePath "~/Desktop/AmazonChimeSDK" SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
-xcodebuild archive -project AmazonChimeSDK/AmazonChimeSDK.xcodeproj -configuration Release -scheme AmazonChimeSDK -destination "generic/platform=iOS Simulator" -archivePath "~/Desktop/AmazonChimeSDK Sim" SKIP_INSTALL=NO BUILD_LIBRARY_FOR_DISTRIBUTION=YES
-xcodebuild -create-xcframework -framework ~/Desktop/AmazonChimeSDK.xcarchive/Products/Library/Frameworks/AmazonChimeSDK.framework -framework ~/Desktop/AmazonChimeSDK\ Sim.xcarchive/Products/Library/Frameworks/AmazonChimeSDK.framework -output ~/Desktop/AmazonChimeSDK.xcframework
