@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objcMembers class ConcurrentMutableSet {
+class ConcurrentMutableSet {
     private let lock = NSRecursiveLock()
     private let set = NSMutableSet()
     var count: Int {
