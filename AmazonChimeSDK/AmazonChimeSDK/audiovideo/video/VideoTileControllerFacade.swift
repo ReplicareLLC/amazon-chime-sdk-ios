@@ -24,7 +24,7 @@ import Foundation
     /// after the completion of this API
     ///
     /// - Parameter tileId: id of the tile which was passed to the application in `VideoTileObserver.videoTileDidRemove`
-    func unbindVideoView(tileId: Int)
+    func unbindVideoView(videoView: VideoRenderView, tileId: Int)
 
     /// Subscribe to Video Tile events with an `VideoTileObserver`.
     ///
