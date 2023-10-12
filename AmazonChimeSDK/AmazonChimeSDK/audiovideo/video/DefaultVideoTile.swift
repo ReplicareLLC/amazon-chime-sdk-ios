@@ -14,7 +14,7 @@ import VideoToolbox
 
     private let logger: Logger
 
-    public var videoRenderView: VideoRenderView?
+    public var videoRenderViews: [VideoRenderView] = []
 
     public init(tileId: Int,
                 attendeeId: String,
@@ -31,22 +31,24 @@ import VideoToolbox
         self.logger = logger
     }
 
-    public func bind(videoRenderView: VideoRenderView?) {
+    public func bind(videoRenderView: VideoRenderView) {
         logger.info(
             msg: "Binding the view to tile: tileId: \(state.tileId), attendeeId: \(state.attendeeId)"
         )
-        self.videoRenderView = videoRenderView
+        self.videoRenderViews.append(videoRenderView)
     }
 
     public func onVideoFrameReceived(frame: VideoFrame) {
-        videoRenderView?.onVideoFrameReceived(frame: frame)
+        for videoRenderView in videoRenderViews {
+            videoRenderView.onVideoFrameReceived(frame: frame)
+        }
     }
 
-    public func unbind() {
+    public func unbind(videoRenderView: VideoRenderView) {
         logger.info(
             msg: "Unbinding the view from tile: tileId: \(state.tileId), attendeeId: \(state.attendeeId)"
         )
-        videoRenderView = nil
+        videoRenderViews.removeAll { $0 === videoRenderView }
     }
 
     public func setPauseState(pauseState: VideoPauseState) {

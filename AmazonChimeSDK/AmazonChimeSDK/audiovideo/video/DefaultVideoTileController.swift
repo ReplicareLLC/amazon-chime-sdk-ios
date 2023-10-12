@@ -12,7 +12,7 @@ import UIKit
 @objcMembers public class DefaultVideoTileController: NSObject, VideoTileController {
     private let logger: Logger
     private var videoTileMap = [Int: VideoTile]()
-    private var videoViewToTileMap = [NSValue: VideoTile]()
+//    private var videoViewToTileMap = [NSValue: VideoTile]()
     private let videoTileObservers = ConcurrentMutableSet()
     private let videoClientController: VideoClientController
     private let meetingStatsCollector: MeetingStatsCollector
@@ -86,37 +86,38 @@ import UIKit
 
     public func bindVideoView(videoView: VideoRenderView, tileId: Int) {
         logger.info(msg: "Binding VideoView to Tile with tileId = \(tileId)")
-        let videoRenderKey = NSValue(nonretainedObject: videoView)
-
-        // Previously there was another videoTile that bounded to the videoView, unbind it
-        if let matchedTile = videoViewToTileMap[videoRenderKey] {
-            logger.info(msg: "Override the binding from \(matchedTile.state.tileId) to \(tileId)")
-            removeVideoViewBindMapping(tileId: matchedTile.state.tileId)
-        }
+//        let videoRenderKey = NSValue(nonretainedObject: videoView)
+//
+//        // Previously there was another videoTile that bounded to the videoView, unbind it
+//        if let matchedTile = videoViewToTileMap[videoRenderKey] {
+//            logger.info(msg: "Override the binding from \(matchedTile.state.tileId) to \(tileId)")
+//            removeVideoViewBindMapping(tileId: matchedTile.state.tileId)
+//        }
 
         if let videoTile = videoTileMap[tileId] {
-            if videoTile.videoRenderView != nil {
-                // If tileId was already bound to another videoRenderView, unbind it
-                logger.info(msg: "tileId = \(tileId) already had a different video view. Unbinding the old one and associating the new one")
-                removeVideoViewBindMapping(tileId: tileId)
-            }
+//            if videoTile.videoRenderView != nil {
+//                // If tileId was already bound to another videoRenderView, unbind it
+//                logger.info(msg: "tileId = \(tileId) already had a different video view. Unbinding the old one and associating the new one")
+//                removeVideoViewBindMapping(tileId: tileId)
+//            }
             videoTile.bind(videoRenderView: videoView)
-            videoViewToTileMap[videoRenderKey] = videoTile
+//            videoViewToTileMap[videoRenderKey] = videoTile
         }
     }
 
-    private func removeVideoViewBindMapping(tileId: Int) {
-        videoViewToTileMap.first(where: { $1.state.tileId == tileId }).map { videoRenderKey, videoTile in
-            videoTile.unbind()
-            videoViewToTileMap.removeValue(forKey: videoRenderKey)
-        }
+    private func removeVideoViewBindMapping(videoView: VideoRenderView, tileId: Int) {
+        videoTileMap[tileId]?.unbind(videoRenderView: videoView)
+//        videoViewToTileMap.first(where: { $0.key.value(of: VideoRenderView) === videoView }).map { videoRenderKey, videoTile in
+//            videoTile.unbind()
+//            videoViewToTileMap.removeValue(forKey: videoRenderKey)
+//        }
     }
 
-    public func unbindVideoView(tileId: Int) {
+    public func unbindVideoView(videoView: VideoRenderView, tileId: Int) {
         logger.info(msg: "Unbinding VideoView to Tile with tileId = \(tileId)")
-        // Remove the video from both mappings when unbind, in order to keep the old SDK behavior
-        videoTileMap.removeValue(forKey: tileId)
-        removeVideoViewBindMapping(tileId: tileId)
+//        // Remove the video from both mappings when unbind, in order to keep the old SDK behavior
+//        videoTileMap.removeValue(forKey: tileId)
+        removeVideoViewBindMapping(videoView: videoView, tileId: tileId)
     }
 
     private func onAddTrack(tileId: Int,

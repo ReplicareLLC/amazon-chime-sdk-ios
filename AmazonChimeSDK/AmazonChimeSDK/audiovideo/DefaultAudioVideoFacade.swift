@@ -205,8 +205,8 @@ import Foundation
         videoTileController.bindVideoView(videoView: videoView, tileId: tileId)
     }
 
-    public func unbindVideoView(tileId: Int) {
-        videoTileController.unbindVideoView(tileId: tileId)
+    public func unbindVideoView(videoView: VideoRenderView, tileId: Int) {
+        videoTileController.unbindVideoView(videoView: videoView, tileId: tileId)
     }
 
     public func addVideoTileObserver(observer: VideoTileObserver) {
