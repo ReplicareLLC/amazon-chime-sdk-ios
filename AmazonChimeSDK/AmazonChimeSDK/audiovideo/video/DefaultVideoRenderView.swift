@@ -10,7 +10,7 @@ import os
 import UIKit
 import VideoToolbox
 
-@objcMembers public class DefaultVideoRenderView: UIImageView, VideoRenderView {
+@objcMembers open class DefaultVideoRenderView: UIImageView, VideoRenderView {
     private let scalingContentModes: [UIView.ContentMode] = [.scaleAspectFill, .scaleToFill, .scaleAspectFit]
 
     public var mirror: Bool = false {
